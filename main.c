@@ -162,6 +162,9 @@ static void pmw3366_init(const uint8_t dpi)
 	spi_write(0x0f, dpi); // 2000 dpi
 	spi_write(0x42, 0x00); // no angle snapping
 	spi_write(0x0d, 0x60); // invert x,y
+	spi_write(0x11, 0x00);	// Angle tune settings; used for rotation of the digital cursor movement axis 
+				// away from the physical mouse movement axis; turned off by value: 0x00 = 0°
+				// range of -30 to +30 defined as: 0xE2 = -30°; 0xF6 = -10°; 0x0F = +15°; 0x1E = +30°
 	SS_HIGH;
 }
 
